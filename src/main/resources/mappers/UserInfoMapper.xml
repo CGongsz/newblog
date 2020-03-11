@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.nov.newblog.dao.UserMapper">
-  <resultMap id="BaseResultMap" type="com.nov.newblog.beans.po.User">
+<mapper namespace="com.nov.newblog.dao.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.nov.newblog.beans.po.UserInfo">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="account" jdbcType="VARCHAR" property="account" />
     <result column="username" jdbcType="VARCHAR" property="username" />
@@ -13,15 +13,38 @@
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
     <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
   </resultMap>
+
+  <resultMap id="VoResultMap" type="com.nov.newblog.beans.vo.UserVO">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="user_type" jdbcType="INTEGER" property="userType" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
   <sql id="Base_Column_List">
     id, account, username, avatar, user_type, email, create_by,
     create_date, update_by, update_date
+  </sql>
+
+  <sql id="Base_Column_t_List">
+    t.id, t.account, t.username, t.avatar, t.user_type, t.email, t.create_by,
+    t.create_date, t.update_by, t.update_date
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
     from user
     where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="selectByAccount" resultMap="VoResultMap">
+    select
+    <include refid="Base_Column_t_List" />
+    ,up.password
+    from user_info t
+    left join user_password up on t.id = up.user_id and t.account = #{account}
   </select>
 
 

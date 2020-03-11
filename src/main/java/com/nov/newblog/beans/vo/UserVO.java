@@ -1,25 +1,31 @@
 package com.nov.newblog.beans.vo;
 
+import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
+
 /**
  * @Author: Nov
  * @CreateDate: 2020-03-11 14:33
  * @Version: 1.0
  */
-public class UserVO {
-    private Long id;
+public class UserVO implements Serializable {
+
+    private Integer id;
+    @NotEmpty
     private String account;
     private String username;
     private String avatar;
     private String userType;
     private String email;
 
+    @NotEmpty
     private String password;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

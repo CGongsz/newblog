@@ -10,8 +10,10 @@ import com.nov.newblog.enums.ExceptionEnum;
 public class BlogException extends RuntimeException{
     private ExceptionEnum exceptionEnum;
 
+    private String msg;
+
     public BlogException(ExceptionEnum exceptionEnum) {
-        super(exceptionEnum.getMsg());
+        msg = exceptionEnum.getMsg();
         this.exceptionEnum = exceptionEnum;
     }
 
@@ -19,7 +21,20 @@ public class BlogException extends RuntimeException{
         this.exceptionEnum = exceptionEnum;
     }
 
+    public BlogException(ExceptionEnum exceptionEnum, String msg) {
+        this.exceptionEnum = exceptionEnum;
+        this.msg = msg;
+    }
+
     public ExceptionEnum getExceptionEnum() {
         return exceptionEnum;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 }

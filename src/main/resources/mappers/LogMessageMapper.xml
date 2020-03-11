@@ -6,8 +6,9 @@
     <result column="operation" jdbcType="VARCHAR" property="operation" />
     <result column="success" jdbcType="INTEGER" property="success" />
     <result column="reason" jdbcType="VARCHAR" property="reason" />
-    <result column="date" jdbcType="TIMESTAMP" property="date" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
     <result column="ip_address" jdbcType="VARCHAR" property="ipAddress" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
   </resultMap>
   <sql id="Base_Column_List">
     id, operation, success, reason, date, email, ip_address
@@ -19,12 +20,15 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
 
+
+
   <insert id="insert" parameterType="com.nov.newblog.beans.po.LogMessage">
     insert into log_message (id, operation, success,
-      reason, date, ip_address
+      reason, create_date, ip_address, create_by
       )
     values (#{id}, #{operation}, #{success},
-      #{reason}, #{date}, #{ipAddress}
+      #{reason}, #{createDate}, #{ipAddress},
+      #{createBy}
       )
   </insert>
 

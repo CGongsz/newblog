@@ -8,8 +8,8 @@ import java.util.Date;
  * @CreateDate: 2020-03-11 14:09
  * @Version: 1.0
  */
-public class User implements Serializable {
-    private Long id;
+public class UserInfo implements Serializable {
+    private Integer id;
     private String account;
     private String username;
     private String avatar;
@@ -20,11 +20,11 @@ public class User implements Serializable {
     private String updateBy;
     private Date updateDate;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -102,7 +102,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserInfo{" +
                 "id=" + id +
                 ", account='" + account + '\'' +
                 ", username='" + username + '\'' +

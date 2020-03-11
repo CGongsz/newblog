@@ -1,7 +1,7 @@
 package com.nov.newblog.dao;
 
 
-import com.nov.newblog.beans.po.User;
+import com.nov.newblog.beans.po.UserInfo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +15,13 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class UserMapperTest{
+public class UserInfoMapperTest {
     @Autowired
-    private UserMapper userMapper;
+    private UserInfoMapper userMapper;
 
     @Test
     public void selectByPrimaryKey() {
-        User user = userMapper.selectByPrimaryKey(1);
+        UserInfo user = userMapper.selectByPrimaryKey(1);
         System.out.println(user);
     }
 }

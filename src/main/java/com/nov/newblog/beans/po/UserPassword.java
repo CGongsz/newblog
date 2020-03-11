@@ -8,23 +8,23 @@ import java.io.Serializable;
  * @Version: 1.0
  */
 public class UserPassword implements Serializable {
-    private Long id;
-    private Long userId;
+    private Integer id;
+    private Integer userId;
     private String password;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public Long getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 

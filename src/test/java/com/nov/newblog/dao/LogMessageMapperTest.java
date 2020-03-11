@@ -30,7 +30,7 @@ public class LogMessageMapperTest {
         logMessage.setReason("test");
         logMessage.setIpAddress("127.0.0.1");
         logMessage.setSuccess(0);
-        logMessage.setDate(new Date());
+        logMessage.setCreateDate(new Date());
         int insert = logMessageMapper.insert(logMessage);
         System.out.println(insert);
     }

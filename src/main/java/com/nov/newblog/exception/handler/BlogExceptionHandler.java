@@ -18,7 +18,7 @@ public class BlogExceptionHandler {
     public Response errorResult(BlogException e){
         Response response = new Response();
         response.setCode(e.getExceptionEnum().getCode());
-        response.setMessage(e.getExceptionEnum().getMsg());
+        response.setMessage(e.getMsg());
         return response;
     }
 

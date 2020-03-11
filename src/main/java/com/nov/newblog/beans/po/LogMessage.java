@@ -9,19 +9,41 @@ import java.util.Date;
  * @Version: 1.0
  */
 public class LogMessage implements Serializable {
-    private Long id;
+    private Integer id;
     private String operation;
     private Integer success;
     private String reason;
-    private Date date;
+    private Date createDate;
     private String ipAddress;
+    private String createBy;
 
 
-    public Long getId() {
+    @Override
+    public String toString() {
+        return "LogMessage{" +
+                "id=" + id +
+                ", operation='" + operation + '\'' +
+                ", success=" + success +
+                ", reason='" + reason + '\'' +
+                ", createDate=" + createDate +
+                ", ipAddress='" + ipAddress + '\'' +
+                ", createBy='" + createBy + '\'' +
+                '}';
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -49,12 +71,12 @@ public class LogMessage implements Serializable {
         this.reason = reason;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public String getIpAddress() {
@@ -63,17 +85,5 @@ public class LogMessage implements Serializable {
 
     public void setIpAddress(String ipAddress) {
         this.ipAddress = ipAddress;
-    }
-
-    @Override
-    public String toString() {
-        return "LogMessage{" +
-                "id=" + id +
-                ", operation='" + operation + '\'' +
-                ", success=" + success +
-                ", reason='" + reason + '\'' +
-                ", date=" + date +
-                ", ipAddress='" + ipAddress + '\'' +
-                '}';
     }
 }

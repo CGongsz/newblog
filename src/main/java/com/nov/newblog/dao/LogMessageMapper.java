@@ -1,7 +1,6 @@
 package com.nov.newblog.dao;
 
 import com.nov.newblog.beans.po.LogMessage;
-import com.nov.newblog.beans.po.User;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -12,6 +11,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface LogMessageMapper {
     LogMessage selectByPrimaryKey(Integer id);
+
+
 
     int insert(LogMessage logMessage);
 }

@@ -47,9 +47,4 @@ public class LoginAspect {
 
     }
 
-    @After("login()")
-    public void afterCut(JoinPoint joinPoint) {
-        // 异步执行日志保存接口
-
-    }
 }
