@@ -12,4 +12,9 @@ spring:
 server:
   servlet:
     context-path: /blog
-
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mappers/*Mapper.xml
+  type-aliases-package: com.nov.newblog.beans

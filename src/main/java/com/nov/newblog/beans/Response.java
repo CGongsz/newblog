@@ -13,8 +13,8 @@ public class Response<T> {
     private Long total;
     private List<T> table;
 
-    private final static String OK = "ok";
-    private final static String ERROR = "error";
+    public final static String OK = "ok";
+    public final static String ERROR = "error";
 
     public static Response ok() {
         Response<Object> objectResponse = new Response<>();

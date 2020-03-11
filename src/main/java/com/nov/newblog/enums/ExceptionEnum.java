@@ -6,18 +6,18 @@ package com.nov.newblog.enums;
  * @Version: 1.0
  */
 public enum ExceptionEnum {
-    NO_LOGIN(401, "未登录或登录超时");
+    NO_LOGIN("401", "未登录或登录超时");
 
 
-    private Integer code;
+    private String code;
     private String msg;
 
-    ExceptionEnum(Integer code, String msg) {
+    ExceptionEnum(String code, String msg) {
         this.code = code;
         this.msg = msg;
     }
 
-    public Integer getCode() {
+    public String getCode() {
         return code;
     }
 

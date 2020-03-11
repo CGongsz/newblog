@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.nov.newblog.dao.LogMessageMapper">
+  <resultMap id="BaseResultMap" type="com.nov.newblog.beans.po.LogMessage">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="operation" jdbcType="VARCHAR" property="operation" />
+    <result column="success" jdbcType="INTEGER" property="success" />
+    <result column="reason" jdbcType="VARCHAR" property="reason" />
+    <result column="date" jdbcType="TIMESTAMP" property="date" />
+    <result column="ip_address" jdbcType="VARCHAR" property="ipAddress" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, operation, success, reason, date, email, ip_address
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from log_message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+
+  <insert id="insert" parameterType="com.nov.newblog.beans.po.LogMessage">
+    insert into log_message (id, operation, success,
+      reason, date, ip_address
+      )
+    values (#{id}, #{operation}, #{success},
+      #{reason}, #{date}, #{ipAddress}
+      )
+  </insert>
+
+
+</mapper>

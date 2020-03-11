@@ -18,4 +18,8 @@ public class BlogException extends RuntimeException{
     public void setExceptionEnum(ExceptionEnum exceptionEnum) {
         this.exceptionEnum = exceptionEnum;
     }
+
+    public ExceptionEnum getExceptionEnum() {
+        return exceptionEnum;
+    }
 }
