@@ -9,7 +9,8 @@ public enum ExceptionEnum {
     NO_LOGIN("401", "未登录或登录超时"),
     NO_USER("402", "无此用户"),
     NO_EQUAL("403", "账号或密码不正确"),
-    UNKNOWN("405", "未知错误");
+    UNKNOWN("405", "未知错误"),
+    ERROR_PARAM("406", "参数错误");
 
 
     private String code;

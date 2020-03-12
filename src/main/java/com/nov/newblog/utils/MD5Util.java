@@ -63,4 +63,11 @@ public class MD5Util {
             return null;
         }
     }
+
+    public static void main(String[] args) {
+        boolean verify = verify("123456", "NxxwaNrcEvn7BqAfDO0dP1Elt/NR5+ctB9idcDEuQQYhrXTNi5XgHoz+rTQTyWzrxqXj3IbH7AKHOuRyriWHivh0yJaCQm42h7af0G4FeNz7tIkMYtxsbqIO/iG9zOviXykQdcf+3aK8Sw2EZhIte5qXMZiLC0cubS54lsGG83k=");
+        String generate = generate("123456");
+        System.out.println(generate);
+        System.out.println(verify);
+    }
 }

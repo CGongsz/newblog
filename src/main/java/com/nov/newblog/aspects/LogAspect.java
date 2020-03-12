@@ -3,7 +3,7 @@ package com.nov.newblog.aspects;
 import com.nov.newblog.beans.Response;
 import com.nov.newblog.beans.po.LogMessage;
 import com.nov.newblog.beans.vo.UserVO;
-import com.nov.newblog.dao.LogMessageMapper;
+import com.nov.newblog.dao.log.LogMessageMapper;
 import com.nov.newblog.enums.ExceptionEnum;
 import com.nov.newblog.exception.BlogException;
 import com.nov.newblog.utils.CommonUtils;
@@ -29,7 +29,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  */
 @Aspect
 @Component
-@Order(9)
+@Order(7)
 public class LogAspect {
     private Logger loger = LoggerFactory.getLogger(LogAspect.class);
     @Autowired

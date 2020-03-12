@@ -1,6 +1,8 @@
 package com.nov.newblog.service.user;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.nov.newblog.beans.po.UserInfo;
+import com.nov.newblog.beans.qo.UserQO;
 import com.nov.newblog.beans.vo.UserVO;
 
 /**
@@ -15,4 +17,14 @@ public interface UserService {
      * @return
      */
     UserVO selectByAccount(String account);
+
+    /**
+     * 注册账号
+     * @param userVO
+     * @return
+     */
+    UserVO register(UserVO userVO);
+
+    Page<UserInfo> findUserList(UserQO userQO);
+
 }

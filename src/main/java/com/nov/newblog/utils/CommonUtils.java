@@ -1,6 +1,10 @@
 package com.nov.newblog.utils;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.google.gson.Gson;
 import com.nov.newblog.enums.PrefixEnum;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -14,13 +18,58 @@ import javax.servlet.http.HttpServletRequest;
  * 公用工具类
  */
 public class CommonUtils {
-    public static Object getCurrentUser() throws JsonProcessingException {
-        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
-                .getRequest();
 
+    public static ThreadLocal<Gson> gsonThreadLocal = new ThreadLocal<Gson>(){
+        @Override
+        protected Gson initialValue() {
+            return new Gson();
+        }
+    };
+    public static ThreadLocal<QueryWrapper> queryWrapperThreadLocal = new ThreadLocal<QueryWrapper>(){
+        @Override
+        protected QueryWrapper initialValue() {
+            return new QueryWrapper();
+        }
+    };
+    public static ThreadLocal<Integer> pageNumThreadLocal = new ThreadLocal<Integer>(){
+        @Override
+        protected Integer initialValue() {
+            return Integer.valueOf(1);
+        }
+    };
+
+    public static ThreadLocal<Integer> pageSizeThreadLocal = new ThreadLocal<Integer>(){
+        @Override
+        protected Integer initialValue() {
+            return Integer.valueOf(10);
+        }
+    };
+
+    public static ThreadLocal<IPage> pageThreadLocal = new ThreadLocal<IPage>(){
+        @Override
+        protected IPage initialValue() {
+            return new Page(1, 10);
+        }
+    };
+
+
+
+    public static Object getCurrentUser() {
+        HttpServletRequest request = getRequest();
         Object attribute = request.getSession().getAttribute(PrefixEnum.LOGIN.name());
 
         return attribute;
+    }
+
+    public static String getHeaderValue(String headerName) {
+        HttpServletRequest request = getRequest();
+        String header = request.getHeader(headerName);
+        return header;
+    }
+
+    public static HttpServletRequest getRequest() {
+        return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+                .getRequest();
     }
 
     /**

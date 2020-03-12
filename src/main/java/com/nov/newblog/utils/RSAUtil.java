@@ -51,6 +51,7 @@ public class RSAUtil {
         try {
             inputByte = Base64.decodeBase64(str.getBytes("UTF-8"));
         } catch (Exception e) {
+            e.printStackTrace();
             return "";
         }
 

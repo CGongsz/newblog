@@ -6,7 +6,8 @@ package com.nov.newblog.enums;
  * @Version: 1.0
  */
 public enum PrefixEnum {
-    LOGIN("登录前缀")
+    LOGIN("登录前缀"),
+    USER("用户名"),
     ;
     private String msg;
 
