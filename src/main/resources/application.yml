@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: gsz1125
-    url: jdbc:mysql://127.0.0.1:3306/blog
+    url: jdbc:mysql://127.0.0.1:3306/blog?characterEncoding=utf-8
     driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
     port: 6379

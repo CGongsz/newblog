@@ -1,5 +1,9 @@
 package com.nov.newblog.beans.po;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -8,12 +12,16 @@ import java.util.Date;
  * @CreateDate: 2020-03-11 14:09
  * @Version: 1.0
  */
+
+@TableName("user_info")
 public class UserInfo implements Serializable {
+
+    @TableId(value = "id",type = IdType.AUTO)
     private Integer id;
     private String account;
     private String username;
     private String avatar;
-    private String userType;
+    private Integer userType;
     private String email;
     private String createBy;
     private Date createDate;
@@ -52,11 +60,11 @@ public class UserInfo implements Serializable {
         this.avatar = avatar;
     }
 
-    public String getUserType() {
+    public Integer getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(Integer userType) {
         this.userType = userType;
     }
 

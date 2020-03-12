@@ -1,5 +1,6 @@
 package com.nov.newblog.service.user;
 
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.nov.newblog.beans.po.UserInfo;
 import com.nov.newblog.beans.qo.UserQO;
@@ -21,10 +22,14 @@ public interface UserService {
     /**
      * 注册账号
      * @param userVO
-     * @return
      */
-    UserVO register(UserVO userVO);
+    void register(UserVO userVO) throws Exception;
 
-    Page<UserInfo> findUserList(UserQO userQO);
+    IPage findUserList(UserQO userQO);
 
+    /**
+     * 登录
+     * @param userVO
+     */
+    void login(UserVO userVO) throws Exception;
 }

@@ -11,6 +11,7 @@ public class Response<T> {
     private String code;
     private String message;
     private Long total;
+    private T data;
     private List<T> table;
 
     public final static String OK = "ok";
@@ -27,6 +28,15 @@ public class Response<T> {
         objectResponse.setCode(ERROR);
         objectResponse.setMessage(message);
         return objectResponse;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public Response<T> setData(T data) {
+        this.data = data;
+        return this;
     }
 
     public String getCode() {

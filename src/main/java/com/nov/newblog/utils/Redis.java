@@ -85,6 +85,7 @@ public class Redis {
         redisTemplate.opsForValue().set(key, value);
     }
 
+
     /**
      * 将值放入缓存并设置时间
      *

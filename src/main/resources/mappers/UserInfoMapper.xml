@@ -28,10 +28,17 @@
     create_date, update_by, update_date
   </sql>
 
+    <sql id="Base_Column_no_id_List">
+     account, username, avatar, user_type, email, create_by,
+    create_date, update_by, update_date
+  </sql>
+
     <sql id="Base_Column_t_List">
     t.id, t.account, t.username, t.avatar, t.user_type, t.email, t.create_by,
     t.create_date, t.update_by, t.update_date
   </sql>
+
+
     <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>

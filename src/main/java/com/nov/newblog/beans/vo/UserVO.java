@@ -15,7 +15,7 @@ public class UserVO implements Serializable {
     private String account;
     private String username;
     private String avatar;
-    private String userType;
+    private Integer userType;
     private String email;
 
     @NotEmpty
@@ -53,11 +53,11 @@ public class UserVO implements Serializable {
         this.avatar = avatar;
     }
 
-    public String getUserType() {
+    public Integer getUserType() {
         return userType;
     }
 
-    public void setUserType(String userType) {
+    public void setUserType(Integer userType) {
         this.userType = userType;
     }
 

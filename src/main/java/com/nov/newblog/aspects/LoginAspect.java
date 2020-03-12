@@ -35,12 +35,6 @@ import java.util.Objects;
 @Order(8)
 public class LoginAspect {
 
-    @Value(value = "${privateKey}")
-    private String privateKey;
-
-    @Autowired
-    private Redis redis;
-
     @Pointcut("execution(public * com.nov.newblog.controller..*.*(..))")
     public void login(){}
 
@@ -62,6 +56,7 @@ public class LoginAspect {
                     !Objects.equals(password, user.getPassword())) {
                 throw new BlogException(ExceptionEnum.NO_EQUAL);
             } else {
+                // 每次操作刷新登录时间
                 CommonUtils.getRequest().getSession().setAttribute(PrefixEnum.LOGIN.name(), user);
             }
         }
