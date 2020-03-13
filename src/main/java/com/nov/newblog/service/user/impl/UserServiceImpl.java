@@ -117,6 +117,7 @@ public class UserServiceImpl implements UserService {
 
         UserPassword userPassword = new UserPassword();
         userPassword.setUserId(userInfo.getId());
+        // MD5加盐处理密码
         userPassword.setPassword(MD5Util.generate(decrypt));
         userPassword.setCreateBy(userVO.getAccount());
         userPassword.setCreateDate(new Date());
@@ -139,7 +140,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public IPage findUserList(@PageQuery UserQO userQO) {
-        CommonUtils.pageNumThreadLocal.get();
         QueryWrapper queryWrapper = CommonUtils.queryWrapperThreadLocal.get();
         IPage iPage = CommonUtils.pageThreadLocal.get();
         userInfoMapper.selectPage(iPage, queryWrapper);

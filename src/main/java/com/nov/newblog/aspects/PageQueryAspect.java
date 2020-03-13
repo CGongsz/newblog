@@ -63,8 +63,6 @@ public class PageQueryAspect {
      */
     @After("pageQuery()")
     public void afterCut(JoinPoint joinPoint) {
-        CommonUtils.pageSizeThreadLocal.remove();
-        CommonUtils.pageNumThreadLocal.remove();
         CommonUtils.queryWrapperThreadLocal.remove();
         CommonUtils.gsonThreadLocal.remove();
         CommonUtils.pageThreadLocal.remove();
@@ -96,12 +94,10 @@ public class PageQueryAspect {
         }
 
         if (Objects.nonNull(baseQuery.getPageNum())) {
-//            CommonUtils.pageNumThreadLocal.set(baseQuery.getPageNum());
             CommonUtils.pageThreadLocal.get().setCurrent(baseQuery.getPageNum());
         }
 
         if (Objects.nonNull(baseQuery.getPageSize())) {
-//            CommonUtils.pageSizeThreadLocal.set(baseQuery.getPageSize());
             CommonUtils.pageThreadLocal.get().setSize(baseQuery.getPageSize());
         }
     }

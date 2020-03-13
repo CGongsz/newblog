@@ -1,7 +1,6 @@
 package com.nov.newblog.utils;
 
 import org.apache.tomcat.util.codec.binary.Base64;
-import org.springframework.beans.factory.annotation.Value;
 
 import javax.crypto.Cipher;
 import java.security.KeyFactory;

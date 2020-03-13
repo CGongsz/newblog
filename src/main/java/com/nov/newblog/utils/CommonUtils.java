@@ -31,20 +31,6 @@ public class CommonUtils {
             return new QueryWrapper();
         }
     };
-    public static ThreadLocal<Integer> pageNumThreadLocal = new ThreadLocal<Integer>(){
-        @Override
-        protected Integer initialValue() {
-            return Integer.valueOf(1);
-        }
-    };
-
-    public static ThreadLocal<Integer> pageSizeThreadLocal = new ThreadLocal<Integer>(){
-        @Override
-        protected Integer initialValue() {
-            return Integer.valueOf(10);
-        }
-    };
-
     public static ThreadLocal<IPage> pageThreadLocal = new ThreadLocal<IPage>(){
         @Override
         protected IPage initialValue() {
