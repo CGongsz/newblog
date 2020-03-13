@@ -101,7 +101,6 @@ public class LogAspect {
             } else {
                 throw new BlogException(ExceptionEnum.UNKNOWN, t.getMessage());
             }
-
         }
         return response;
     }

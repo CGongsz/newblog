@@ -52,6 +52,10 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private Redis redis;
 
+    private final static Long TEN_MINUTES = 600L;
+
+    private final static Long ZORE = 0L;
+
 
     @Override
     public UserVO selectByAccount(String account) {
@@ -77,7 +81,7 @@ public class UserServiceImpl implements UserService {
                 redis.set(PrefixEnum.USER.name() + userVO.getAccount(), userStr);
             } else {
                 // 不存在的用户，缓存10分钟，防止恶意访问
-                redis.set(PrefixEnum.USER.name() + userVO.getAccount(), ExceptionEnum.NO_USER.name(), 600);
+                redis.set(PrefixEnum.USER.name() + userVO.getAccount(), ExceptionEnum.NO_USER.name(), TEN_MINUTES);
             }
         } else {
             user = CommonUtils.gsonThreadLocal.get().fromJson(u.toString(), UserVO.class);
@@ -132,7 +136,7 @@ public class UserServiceImpl implements UserService {
                                              @Override
                                              public void afterCommit() {
                                                  // 防止redis中存在了该用户key
-                                                 redis.expire(PrefixEnum.USER + userVO.getAccount(), 0);
+                                                 redis.expire(PrefixEnum.USER + userVO.getAccount(), ZORE);
                                              }
                                          }
                 );
