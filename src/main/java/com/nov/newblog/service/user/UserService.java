@@ -32,4 +32,9 @@ public interface UserService {
      * @param userVO
      */
     void login(UserVO userVO) throws Exception;
+
+    /**
+     * 退出
+     */
+    void exit();
 }

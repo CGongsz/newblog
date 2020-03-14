@@ -97,6 +97,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void exit() {
+        // 直接清除session数据
+        CommonUtils.getRequest().getSession().removeAttribute(PrefixEnum.LOGIN.name());
+    }
+
+    @Override
     @Transactional(rollbackFor = Exception.class)
     public void register(UserVO userVO) throws Exception {
         checkParam(userVO);

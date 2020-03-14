@@ -11,10 +11,7 @@ import com.nov.newblog.service.user.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 /**
@@ -37,6 +34,12 @@ public class UserController {
     @ApiOperation("登录接口，登录成功会将信息放入session")
     public Response login(@RequestBody UserVO userVO) throws Exception {
         userService.login(userVO);
+        return Response.ok();
+    }
+
+    @GetMapping("/backstage/exit")
+    public Response exit() {
+        userService.exit();
         return Response.ok();
     }
 
