@@ -70,4 +70,8 @@ public class Response<T> {
     public void setTable(List<T> table) {
         this.table = table;
     }
+
+
+
+
 }
