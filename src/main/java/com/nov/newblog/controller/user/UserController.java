@@ -27,8 +27,6 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-
-
     @PostMapping("/backstage/login")
     @IgnoreLogin
     @ApiOperation("登录接口，登录成功会将信息放入session")
@@ -38,6 +36,7 @@ public class UserController {
     }
 
     @GetMapping("/backstage/exit")
+    @ApiOperation("登出接口")
     public Response exit() {
         userService.exit();
         return Response.ok();

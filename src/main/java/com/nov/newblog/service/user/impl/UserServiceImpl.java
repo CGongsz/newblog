@@ -56,6 +56,12 @@ public class UserServiceImpl implements UserService {
 
     private final static Long ZORE = 0L;
 
+    private final static String CURRENT = "current";
+
+    private final static String SIZE = "size";
+
+    private final static String SEPARATOR = ":";
+
 
     @Override
     public UserVO selectByAccount(String account) {
@@ -67,9 +73,9 @@ public class UserServiceImpl implements UserService {
         // 私钥解密
         String decrypt = RSAUtil.decrypt(userVO.getPassword(), privateKey);
 
-        Object u = redis.get(PrefixEnum.USER.name() + userVO.getAccount());
+        Object u = redis.get(PrefixEnum.USERNAME.getCode() + SEPARATOR + userVO.getAccount());
         if (Objects.equals(u, ExceptionEnum.NO_USER.name())) {
-            throw new BlogException(ExceptionEnum.NO_USER);
+            throw new BlogException(ExceptionEnum.NO_EQUAL);
         }
 
         UserVO user = null;
@@ -78,10 +84,10 @@ public class UserServiceImpl implements UserService {
             user = selectByAccount(userVO.getAccount());
             if (Objects.nonNull(user)) {
                 String userStr = CommonUtils.gsonThreadLocal.get().toJson(user);
-                redis.set(PrefixEnum.USER.name() + userVO.getAccount(), userStr);
+                redis.set(PrefixEnum.USERNAME.getCode() + SEPARATOR + userVO.getAccount(), userStr);
             } else {
                 // 不存在的用户，缓存10分钟，防止恶意访问
-                redis.set(PrefixEnum.USER.name() + userVO.getAccount(), ExceptionEnum.NO_USER.name(), TEN_MINUTES);
+                redis.set(PrefixEnum.USERNAME.getCode() + SEPARATOR + userVO.getAccount(), ExceptionEnum.NO_USER.name(), TEN_MINUTES);
             }
         } else {
             user = CommonUtils.gsonThreadLocal.get().fromJson(u.toString(), UserVO.class);
@@ -89,17 +95,17 @@ public class UserServiceImpl implements UserService {
 
         // md5验证密码正确性
         if (Objects.isNull(user) || !MD5Util.verify(decrypt, user.getPassword())) {
-            CommonUtils.getRequest().getSession().removeAttribute(PrefixEnum.LOGIN.name());
+            CommonUtils.getRequest().getSession().removeAttribute(PrefixEnum.LOGIN.getCode());
             throw new BlogException(ExceptionEnum.NO_EQUAL);
         }
         // 将用户设置到分布式session中
-        CommonUtils.getRequest().getSession().setAttribute(PrefixEnum.LOGIN.name(), userVO);
+        CommonUtils.getRequest().getSession().setAttribute(PrefixEnum.LOGIN.getCode(), userVO);
     }
 
     @Override
     public void exit() {
         // 直接清除session数据
-        CommonUtils.getRequest().getSession().removeAttribute(PrefixEnum.LOGIN.name());
+        CommonUtils.getRequest().getSession().removeAttribute(PrefixEnum.LOGIN.getCode());
     }
 
     @Override
@@ -142,7 +148,7 @@ public class UserServiceImpl implements UserService {
                                              @Override
                                              public void afterCommit() {
                                                  // 防止redis中存在了该用户key
-                                                 redis.expire(PrefixEnum.USER + userVO.getAccount(), ZORE);
+                                                 redis.expire(PrefixEnum.USERNAME.getCode() + SEPARATOR + userVO.getAccount(), ZORE);
                                              }
                                          }
                 );
@@ -153,6 +159,7 @@ public class UserServiceImpl implements UserService {
         QueryWrapper queryWrapper = CommonUtils.queryWrapperThreadLocal.get();
         IPage iPage = CommonUtils.pageThreadLocal.get();
         userInfoMapper.selectPage(iPage, queryWrapper);
+
         return iPage;
     }
 

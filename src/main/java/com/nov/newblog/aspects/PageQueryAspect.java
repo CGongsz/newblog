@@ -27,6 +27,11 @@ import java.util.Objects;
 @Component
 @Order(11)
 public class PageQueryAspect {
+    private final static String LIKE = "like";
+    private final static String EQ = "eq";
+    private final static String LT = "lt";
+    private final static String GT = "gt";
+
     @Pointcut("execution(public * com.nov.newblog.service..*.*(..))")
     public void pageQuery(){}
 
@@ -71,20 +76,21 @@ public class PageQueryAspect {
     private void setQuery(BaseQuery baseQuery) {
         QueryWrapper queryWrapper = CommonUtils.queryWrapperThreadLocal.get();
         if (!CollectionUtils.isEmpty(baseQuery.getQueryMap())) {
+            // 字段查询条件
             baseQuery.getQueryMap().forEach((k, v) -> {
-                if (Objects.equals(k.trim(), "like")) {
+                if (Objects.equals(k.trim(), LIKE)) {
                     v.forEach((field, value) -> {
                         queryWrapper.like(field, value);
                     });
-                } else if (Objects.equals(k.trim(), "eq")) {
+                } else if (Objects.equals(k.trim(), EQ)) {
                     v.forEach((field, value) -> {
                         queryWrapper.eq(field, value);
                     });
-                } else if (Objects.equals(k.trim(), "lt")) {
+                } else if (Objects.equals(k.trim(), LT)) {
                     v.forEach((field, value) -> {
                         queryWrapper.lt(field, value);
                     });
-                } else if (Objects.equals(k.trim(), "gt")) {
+                } else if (Objects.equals(k.trim(), GT)) {
                     v.forEach((field, value) -> {
                         queryWrapper.gt(field, value);
                     });
@@ -92,6 +98,7 @@ public class PageQueryAspect {
             });
         }
 
+        // 设置分页数据
         if (Objects.nonNull(baseQuery.getPageNum())) {
             CommonUtils.pageThreadLocal.get().setCurrent(baseQuery.getPageNum());
         }

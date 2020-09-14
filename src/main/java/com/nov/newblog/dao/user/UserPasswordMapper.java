@@ -1,7 +1,6 @@
 package com.nov.newblog.dao.user;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.nov.newblog.beans.po.LogMessage;
 import com.nov.newblog.beans.po.UserPassword;
 import org.springframework.stereotype.Repository;
 

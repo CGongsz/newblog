@@ -12,13 +12,6 @@ spring:
 server:
   servlet:
     context-path: /blog
-#mybatis:
-#  configuration:
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-#    map-underscore-to-camel-case: true
-#  mapper-locations: classpath:mappers/*Mapper.xml
-#  type-aliases-package: com.nov.newblog.beans
-
 
 privateKey: MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAOn0VpaVlz92gdeKXrQ1wkHnq2tA6hhIzHktSAGv6sYA0k0Em9Qk4jcmp+zlrF/gvH8mqWEZyaUG40SC3XqITDAEuPoZKkcib6pn9tPXEeomonNLnk9S7ok2FmxXoRHP+2+zd0hO5NrTPFMJJfhz0OeIgXRW5YIuAS9FW4jamoFhAgMBAAECgYBS+Rg4gcdJd7MnCWj7CtHhY9OUz0n24OK720ZdatGd9a6gKBFIFOix3KDT0MTooCDaC5Eo4ed1AtNZefwot+wksf2RdXgoAf/uS1GpxbzXhzFHmfDBOf7yKRXm4K/xzVWu7+1DI2siGwuQ6GWfyhZlGCgjDASHmSYOAidG8t6KQQJBAPeotqqoY0Q7yICWyRbJIVgtABRxSR6xE+4fGjHev219pYopK7r0KRQsyAgHsFoFwzx9Rzr8YG85LBQ7lAeenzkCQQDx1XchnIRRuAl5f9ELQuZjz8orT08nKhrM2aNswfmY5UC7amJPvPSZihYGO+V75NBGii6glG1Fskp+o4HbkctpAkA/DChUkcGToVSNx9Uxg8qFVA9tJNnkglf8itZ0U6yQByiZX5nOYlIC3NOfl7WBdW4afBoiHhW+uuNJ01EAD5WhAkANBpx2GQIfjLQl8TaHTsEuGyEemBUBXQk4g3iEASa6j46fCanl9Z2PL5rkFxHTTI3TXtoIGDaSjHnqvE/gTcgRAkEA92TtlNrcVMm7ZkXz26YXkJ5dLDAFB7X8GxZU7DBJ3nFU8Ezj3V5y+5ka494A7/8WVYZUpnm9KspvMmNNK4l/lQ==
 mybatis-plus:

@@ -39,20 +39,32 @@ public class CommonUtils {
     };
 
 
-
+    /**
+     * 获取当前登录人
+     * @return
+     */
     public static Object getCurrentUser() {
         HttpServletRequest request = getRequest();
-        Object attribute = request.getSession().getAttribute(PrefixEnum.LOGIN.name());
+        Object attribute = request.getSession().getAttribute(PrefixEnum.LOGIN.getCode());
 
         return attribute;
     }
 
+    /**
+     * 获取header里指定的值
+     * @param headerName
+     * @return
+     */
     public static String getHeaderValue(String headerName) {
         HttpServletRequest request = getRequest();
         String header = request.getHeader(headerName);
         return header;
     }
 
+    /**
+     * 获取request
+     * @return
+     */
     public static HttpServletRequest getRequest() {
         return ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
                 .getRequest();

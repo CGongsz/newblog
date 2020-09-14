@@ -20,6 +20,10 @@ public class Redis {
     @Autowired
     private RedisTemplate redisTemplate;
 
+    public boolean delete(String key) {
+        return redisTemplate.delete(key);
+    }
+
 
     /**
      * 给一个指定的 key 值附加过期时间
@@ -101,6 +105,7 @@ public class Redis {
             redisTemplate.opsForValue().set(key, value);
         }
     }
+
 
     /**
      * 批量添加 key (重复的键会覆盖)

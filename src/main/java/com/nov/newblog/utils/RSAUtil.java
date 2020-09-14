@@ -108,13 +108,11 @@ public class RSAUtil {
                 "BfrKuc7Xgl0Anib7IQIDAQAB";
 
         String str = "123456";
-        // 1. 将明文密码字符串转字节数组
 
-
-        // 2. 用公钥进行加密
+        // 用公钥进行加密
         String strEncryptByte = RSAUtil.encrypt(str, publicKey);
 
-        // 3. 用私钥进行解密
+        // 用私钥进行解密
         String strDecryptByte = RSAUtil.decrypt(strEncryptByte, privateKey);
 
         System.out.println("加密前：" + str);
